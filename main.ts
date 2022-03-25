@@ -1,14 +1,21 @@
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    puntua.change(LedSpriteProperty.Y, -1)
-})
 input.onButtonPressed(Button.A, function () {
-    puntua.move(-1)
+    Bonba.move(-1)
 })
 input.onButtonPressed(Button.AB, function () {
-    puntua.change(LedSpriteProperty.Y, 1)
+    let sprite: game.LedSprite = null
+    for (let index = 0; index < 4; index++) {
+        Bonba.change(LedSpriteProperty.Y, 1)
+        basic.pause(500)
+    }
+    if (sprite.get(LedSpriteProperty.Y) == 4) {
+        basic.showIcon(IconNames.Chessboard)
+        basic.showIcon(IconNames.SmallDiamond)
+        sprite.set(LedSpriteProperty.X, 2)
+        sprite.set(LedSpriteProperty.Y, 0)
+    }
 })
 input.onButtonPressed(Button.B, function () {
-    puntua.move(1)
+    Bonba.move(1)
 })
-let puntua: game.LedSprite = null
-puntua = game.createSprite(2, 4)
+let Bonba: game.LedSprite = null
+Bonba = game.createSprite(2, 0)
